@@ -11,11 +11,12 @@ class Payer extends Database
 
     public $Result;
     public $table = "payer";
+   
 
 
-    public function payerInfo($condition = "", $field = "*", $colums = "")
+    public function payerInfo($condition = "", $field = "*", $column = "")
     {
-        return $this->lookUp($this->table, $field, $condition, $colums);
+        return $this->lookUp($this->table, $field, $condition, $column);
     }
 
     public function singlePayerInfo($id)
@@ -46,23 +47,23 @@ class Payer extends Database
 
     public function validation()
     {
-        if (Fun::checkForEmpty([$this->name, $this->phone, $this->email, $this->address, $this->amount_of_contribution])) {
-            Fun::redirect("../../Views/index.php", "msg", "None of this fields must be empty");
+        if (Fun::checkEmptyInput([$this->name, $this->phone, $this->email, $this->address, $this->amount_of_contribution])) {
+            Fun::redirect("../../Views/index.php", "err", "None of this fields must be empty");
             exit;
         }
 
         if (is_numeric($this->name)) {
-            Fun::redirect("../../Views/index.php", "msg", "Name must not contain numbers");
+            Fun::redirect("../../Views/index.php", "err", "Name must not contain numbers");
             exit;
 
         }
 
         if (!is_numeric($this->phone)) {
-            Fun::redirect("../../Views/index.php", "msg", "Phone number must not contain alphabets ");
+            Fun::redirect("../../Views/index.php", "err", "Phone number must not contain alphabets ");
             exit;
 
         }
-        Fun::redirect("../../Views/index.php", "msg", "Saved successfully");
+        Fun::redirect("../../Views/index.php", "succ", "Saved successfully");
     }
 
 
