@@ -7,7 +7,7 @@ class Fun extends Database
     public static function redirect($url, $type, $msg)
     {
         return header("Location: $url?$type=$msg");
-        exit;
+      
     }
 
     public static function checkEmptyInput($params = [])
@@ -20,23 +20,23 @@ class Fun extends Database
         return false;
     }
 
-    public static function dynamicDropdown($name, $table, $label,$condition, $value = "id", $title)
+    public static function dynamicDropdown($name, $table, $label, $condition, $value = "id", $title)
     {
         global $db;
-        $data = $db->lookUp($table, "*",$condition);
+        $data = $db->lookUp($table, "*", $condition);
 
         echo "<select id = '$name' name='$name'>";
         echo " <option value=''>Select $title</option>";
 
         foreach ($data as $rlt) {
             $lab = $rlt[$label];
-            $value = $rlt[$value];
-            echo " <option value='$value'>$lab</option>";
+            $val = $rlt[$value];
+            echo " <option value='$val'>$lab</option>";
         }
         echo "</select>";
     }
 
-    public function arrayPrinter($array)
+    public static function arrayPrinter($array)
     {
         echo "<pre>";
         print_r($array);

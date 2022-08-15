@@ -10,14 +10,26 @@ class Payer extends Database
     public $amount_of_contribution;
 
     public $Result;
+    public $Rlt;
+    public $value;
     public $table = "payer";
-   
+
 
 
     public function payerInfo($condition = "", $field = "*", $column = "")
     {
         return $this->lookUp($this->table, $field, $condition, $column);
     }
+
+    public function getInfoByGender($gender)
+    {
+        return $this->payerInfo("gender = '$gender'");
+
+    }
+    // public function getGender($gender){
+    //   $this->Rlt = $this->payerInfo("gender = '$gender'");
+    //   return $this->gender = $this->Rlt['gender'];
+    // }
 
     public function singlePayerInfo($id)
     {
@@ -55,13 +67,11 @@ class Payer extends Database
         if (is_numeric($this->name)) {
             Fun::redirect("../../Views/index.php", "err", "Name must not contain numbers");
             exit;
-
         }
 
         if (!is_numeric($this->phone)) {
             Fun::redirect("../../Views/index.php", "err", "Phone number must not contain alphabets ");
             exit;
-
         }
         Fun::redirect("../../Views/index.php", "succ", "Saved successfully");
     }
@@ -77,6 +87,11 @@ class Payer extends Database
         $this->amount_of_contribution = $amount_of_contribution;
         $this->validation();
         $this->savePayerInfo();
+    }
+
+    public function processGenderInfo($gender)
+    {
+        $this->getInfoByGender($gender);
     }
 
     public function savePayerInfo()

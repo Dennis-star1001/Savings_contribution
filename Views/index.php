@@ -2,6 +2,7 @@
 
 require("../Model/Database/database.php");
 require("../Controller/Classes/payer.php");
+require("../Controller/Function/commonFunction.php");
 
 ?>
 <!DOCTYPE html>
@@ -39,6 +40,7 @@ require("../Controller/Classes/payer.php");
                     <input type="text" name="name">
                     <br>
                     <br>
+                   
                     <label for="">Phone Number:</label><br>
                     <input type="tel" name="phone">
                     <br>
@@ -70,16 +72,16 @@ require("../Controller/Classes/payer.php");
                         </select>
                     </div>
 
-          
-            <br>
-            <br>
-            <input type="submit" class="submit" id="btn_submit" name="btn_submit">
-            </form>
+
+                    <br>
+                    <br>
+                    <input type="submit" class="submit" id="btn_submit" name="btn_submit">
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="right">
-        <div class="image"></div>
-    </div>
+        <div class="right">
+            <div class="image"></div>
+        </div>
     </div>
 
 </body>

@@ -12,7 +12,7 @@ class Database
     private $result = [];
     private $myQuery = "";
     private $numResults = "";
-  
+
     // constructor
     function __construct()
     {
@@ -56,6 +56,7 @@ class Database
             return false; // No rows were returned
         }
     }
+
 
     public function escape($string)
     {
@@ -128,21 +129,4 @@ class Database
             }
         }
     }
-
-    // public function innerJoinLookUp($tableA, $field = "*", $tableB, $condition = "", $column = "")
-    // {
-    //     $this->sql("SELECT $field FROM $tableA INNER JOIN  $tableB ON $condition");
-    //     $rlt = $this->getResult();
-    //     if (!empty($rlt)) {
-    //         if (is_object($rlt) || is_array($rlt)) {
-    //             if (!empty($column)) {
-    //                 if (!empty($rlt[0][$column])) {
-    //                     return $rlt[0][$column];
-    //                 }
-    //             } else {
-    //                 return $rlt;
-    //             }
-    //         }
-    //     }
-    // }
 }

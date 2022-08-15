@@ -22,13 +22,13 @@ class Contribution extends Database
     {
         $this->result = $this->contributionInfo("id = '$id'");
         $this->contributors_id = $this->result['contributors_id'];
-        $this->data_of_contribution = $this->result['date_of_contribution'];
+        $this->date_of_contribution = $this->result['date_of_contribution'];
         $this->amount = $this->result['amount'];
         $this->payment_method = $this->result['payment_method'];
     }
     public function countContributionRow($condition)
     {
-        return $this->countRows($this->table, "*", $condition);
+        return $this->countRows($this->contributors_table, "*", $condition);
     }
   
     public function isExist($condition)
@@ -43,19 +43,18 @@ class Contribution extends Database
 
     public function validationForContribution()
     {
-        if (Fun::checkEmptyInput([$this->data_of_contribution, $this->amount, $this->payment_method])) {
+        if (Fun::checkEmptyInput([$this->contributors_id,$this->date_of_contribution, $this->amount, $this->payment_method])) {
             Fun::redirect("../../Views/contribution.php", "err", "None of this fields must be empty");
             exit;
         }
 
-        if ($this->isExist($this->data_of_contribution)) {
-            Fun::redirect("../../Views/contribution.php", "err", "Date of contribution already exist");
-            exit;
+        // if ($this->isExist($this->date_of_contribution)) {
+        //     Fun::redirect("../../Views/contribution.php", "err", "Date of contribution already exist");
+        //     exit;
 
-        }
-
-      
-        Fun::redirect("../../Views/contribution.php", "succ", "Saved successfully");
+        // }
+    Fun::redirect("../../Views/contribution.php", "succ", "Saved successfully");
+             
     }
 
 
@@ -63,18 +62,16 @@ class Contribution extends Database
 
     public function processContribution($contributors_id, $date_of_contribution, $amount, $payment_method)
     {
-        $this->contributors_id = $contributors_id;
-        $this->date_of_contribution = $date_of_contribution;
-        $this->amount = $amount;
+        $this->contributors_id = $contributors_id; 
+        $this->date_of_contribution =  $date_of_contribution; 
+        $this->amount =  $amount;
         $this->payment_method = $payment_method;
-        // $this->validationForContribution();
+        $this->validationForContribution();
         $this->saveContributionInfo();
     }
 
     public function  saveContributionInfo()
     {
-        echo "contributors_id = '$this->contributors_id', date_of_contribution = '$this->date_of_contribution', amount = '$this->amount', payment_method = '$this->payment_method'";
-        exit;
-        return $this->save($this->contributors_table, "contributors_id = '$this->contributors_id', date_of_contribution = '$this->date_of_contribution', amount = '$this->amount', payment_method = '$this->payment_method' ");
+        return $this->save($this->contributors_table, "contributors_id = '$this->contributors_id', date_of_contribution = '$this->date_of_contribution', amount = '$this->amount', payment_method = '$this->payment_method'");
     }
 }

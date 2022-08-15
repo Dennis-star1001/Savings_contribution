@@ -36,17 +36,16 @@ require("../Controller/Function/commonFunction.php");
                     ?>
                     <h1>Contribution page</h1>
                     <?php 
-                    //   $db = new Database();
-                    //   Fun::dynamicDropdown("contributors_id", "payer", "name","contributors_id", "name", "Name");
+                      $db = new Database();
+                      Fun::dynamicDropdown("contributors_id", "payer", "name","", "id", "Name");
                     
 
 
 
 
-
                     ?>
-                    <label for="">Name:</label><br>
-                    <input type="text" name="contributors_id">
+                    <!-- <label for="">Name:</label><br>
+                    <input type="text" name="contributors_id">-->
                     <br>
                     <br>
                     <label for="">Date of contribution:</label><br>
