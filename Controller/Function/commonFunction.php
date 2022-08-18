@@ -19,11 +19,12 @@ class Fun extends Database
         }
         return false;
     }
-
-    public static function dynamicDropdown($name, $table, $label, $condition, $value = "id", $title)
+    
+    public static function  dynamicDropdown($name, $table, $label, $value = "id", $title, $fields="*", $condition="")
     {
-        global $db;
-        $data = $db->lookUp($table, "*", $condition);
+        $db = new Database();
+        // echo "$name, $table, $label, $value, $title, $fields";exit;
+        $data = $db->lookUp($table, $fields, $condition);
 
         echo "<select id = '$name' name='$name'>";
         echo " <option value=''>Select $title</option>";
@@ -42,4 +43,5 @@ class Fun extends Database
         print_r($array);
         echo "</pre>";
     }
+    
 }

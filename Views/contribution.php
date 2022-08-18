@@ -30,22 +30,21 @@ require("../Controller/Function/commonFunction.php");
                     if (isset($_GET[$succ])) {
                         echo "<p class='msg'>Success: " . $_GET[$succ]  ."!</p>" ;
                     }
-                    // $msg = "";
+                  
 
 
                     ?>
                     <h1>Contribution page</h1>
                     <?php 
                       $db = new Database();
-                      Fun::dynamicDropdown("contributors_id", "payer", "name","", "id", "Name");
-                    
+                      echo Fun::dynamicDropdown("contributors_id", "payer", "name","id", "Name", "*");
+                   
 
 
 
 
                     ?>
-                    <!-- <label for="">Name:</label><br>
-                    <input type="text" name="contributors_id">-->
+                   
                     <br>
                     <br>
                     <label for="">Date of contribution:</label><br>

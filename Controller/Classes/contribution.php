@@ -62,6 +62,7 @@ class Contribution extends Database
 
     public function processContribution($contributors_id, $date_of_contribution, $amount, $payment_method)
     {
+
         $this->contributors_id = $contributors_id; 
         $this->date_of_contribution =  $date_of_contribution; 
         $this->amount =  $amount;
@@ -72,6 +73,7 @@ class Contribution extends Database
 
     public function  saveContributionInfo()
     {
+       
         return $this->save($this->contributors_table, "contributors_id = '$this->contributors_id', date_of_contribution = '$this->date_of_contribution', amount = '$this->amount', payment_method = '$this->payment_method'");
     }
 }

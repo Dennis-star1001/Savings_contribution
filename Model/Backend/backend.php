@@ -15,26 +15,17 @@ if ($_POST['contribution']) {
     // Fun::redirect("../../Views/contribution.php", "succ", "Saved successfully");
     exit;
 }
-if ($_POST['contributors_id']) {
-    // Fun::dynamicDropdown("contributors_id", "payer", "name","", "name", "Name");
-    Fun::dynamicDropdown("contributors_id", "payer", "name", "", "id", "Name");
-    exit;
-}
+// if ($_POST['contributors_id']) {
+//     // Fun::dynamicDropdown("contributors_id", "payer", "name","", "name", "Name");
+//     Fun::dynamicDropdown("contributors_id", "payer", "name","name", "Name", "id");
+//     // Fun::dynamicDropdown("contributors_id", "payer", "name", "", "id", "Name","");
+//     exit;
+// }
 if ($_POST['btn_submit']) {
     $payer->processPayer($_POST['name'], $_POST['phone'], $_POST['email'], $_POST['address'], $_POST['gender'], $_POST['amount_of_contribution']);
     // Fun::redirect("../../Views/index.php", "msg", "Saved successfully");
     exit;
 }
-if ($_POST["save"]) {
-
-
-
-$pay = new Payer();
-$rlt = $pay->getInfoByGender($_POST['gender']);
-    Fun::redirect("../../Views/Admin.php", "", "");
-
-}
-
 //     if (!empty($rlt)) {
 //         foreach ($rlt as  $row) {
 //             $fina = " <tr>

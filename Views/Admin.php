@@ -45,7 +45,7 @@ if (isset($_GET['msg'])) {
 
                     <?php
 
-                   
+                    if (isset($_POST['gender'])) {
                         $pay = new Payer();
                         $rlt = $pay->getInfoByGender($_POST['gender']);
 
@@ -54,15 +54,15 @@ if (isset($_GET['msg'])) {
 
                         if (!empty($rlt)) {
                             foreach ($rlt as  $row) {
-                                echo " <tr>
+                                echo "<tr>
                                 <td>{$row['name']} </td>
                                 <td>{$row['gender']}</td>
                                 <td>{$row['phone']}</td>
-                            </tr><br>";
+                            </tr>
+                            <br>";
                             }
                         }
-                    // }
-
+                    }
 
                     ?>
 

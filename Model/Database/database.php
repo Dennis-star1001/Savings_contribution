@@ -40,6 +40,7 @@ class Database
                 $r = $query->fetch_array();
                 $key = array_keys($r);
                 for ($x = 0; $x < count($key); $x++) {
+                  
                     // Sanitizes keys so only alpha-values are allowed
                     if (!is_int($key[$x])) {
                         if ($query->num_rows >= 1) {
@@ -114,9 +115,13 @@ class Database
 
     public function lookUp($table, $field = "*", $condition = "", $column = "")
     {
+      
         $con = !empty($condition) ? " WHERE $condition" : "";
+        
         $this->sql("SELECT $field FROM $table $con");
+        // $this->getSql();exit;
         $rlt = $this->getResult();
+       
         if (!empty($rlt)) {
             if (is_object($rlt) || is_array($rlt)) {
                 if (!empty($column)) {

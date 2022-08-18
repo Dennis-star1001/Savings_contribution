@@ -24,12 +24,8 @@ class Payer extends Database
     public function getInfoByGender($gender)
     {
         return $this->payerInfo("gender = '$gender'");
-
     }
-    // public function getGender($gender){
-    //   $this->Rlt = $this->payerInfo("gender = '$gender'");
-    //   return $this->gender = $this->Rlt['gender'];
-    // }
+ 
 
     public function singlePayerInfo($id)
     {
