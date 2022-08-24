@@ -7,7 +7,7 @@ require("../Controller/Function/commonFunction.php");
 $display = [''];
 
 if (isset($_GET['msg'])) {
-    $_GET['msg   '];
+    $_GET['msg'];
 }
 
 
@@ -20,6 +20,7 @@ if (isset($_GET['msg'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Contribution</title>
     <script type="text/javascript">
         function onchangeFun(str) {
@@ -34,16 +35,14 @@ if (isset($_GET['msg'])) {
         <div class="left">
             <div class="form">
 
-                <form action="../Model/Backend/form-backend.php" method="POST" id="form">
+                <form action="" method="POST" id="form">
 
                     <h1>Dashboard page</h1>
                     <br>
                     <br>
-
-
-
                     <label for=''>Action:</label>
-                    <select name='action' class="find" id="dropdown">
+                    <select name='action' id="dropdown">
+                        <option value=''>Select Action</option>
 
                         <option value='gender'>Gender</option>
                         <option value='amount_of_contribution'>Amount</option>
@@ -56,6 +55,31 @@ if (isset($_GET['msg'])) {
                     <div id="dd">
 
                     </div>
+                    <div id="mm">
+                        <?php
+
+                        if (isset($_POST['save'])) {
+                            $lab = $_POST['action'];
+                            $val = $_POST['contributor_id'];
+                            $payerBio = new Payer();
+                            $rlt = $payerBio->getInfoByGender($lab, $val);
+                            if (!empty($rlt)) {
+                                foreach ($rlt as  $row) {
+                                    echo "  <tr>
+                       
+                        <td>{$row['name']}</td>
+                        <td>{$row['gender']}</td>
+                        <td>{$row['phone']} </td>
+                        <td>{$row['email']} </td>
+                        <td>{$row['address']} </td>
+                    </tr><br>";
+                                }
+                            }
+                        }
+
+                        ?>
+                    </div>
+
                     <?php
 
                     ?>
@@ -65,8 +89,9 @@ if (isset($_GET['msg'])) {
                     <input type="submit" class="submit" name='save'>
                     <script>
                         let form = document.querySelector("#form");
+                        let dropdown = document.querySelector("#dropdown");
 
-                        form.addEventListener("change", e => {
+                        dropdown.addEventListener("change", e => {
 
                             e.preventDefault();
 
@@ -80,6 +105,7 @@ if (isset($_GET['msg'])) {
                                     $("#dd").html(data);
                                 }
                             });
+
                         });
                     </script>
                 </form>
@@ -89,8 +115,6 @@ if (isset($_GET['msg'])) {
             <div class="image"></div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="ajax-script.js" type="text/javascript"></script>
 </body>
 
 </html>

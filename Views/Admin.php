@@ -47,7 +47,7 @@ if (isset($_GET['msg'])) {
 
                     if (isset($_POST['gender'])) {
                         $pay = new Payer();
-                        $rlt = $pay->getInfoByGender($_POST['gender']);
+                        $rlt = $pay->getInfoByGender('gender',$_POST['gender']);
 
 
 

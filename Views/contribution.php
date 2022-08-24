@@ -21,19 +21,19 @@ require("../Controller/Function/commonFunction.php");
             <div class="form">
 
                 <form action="../Model/Backend/backend.php" method="POST">
-                <?php
-                    $err = "err";
-                    $succ = "succ";
-                    if (isset($_GET[$err])) {
-                        echo "<p class='msg'>Warning: " . $_GET[$err]  ."!</p>" ;
-                    }
-                    if (isset($_GET[$succ])) {
-                        echo "<p class='msg'>Success: " . $_GET[$succ]  ."!</p>" ;
-                    }
-                  
+                    <?php
+                        $err = "err";
+                        $succ = "succ";
+                        if (isset($_GET[$err])) {
+                            echo "<p class='msg'>Warning: " . $_GET[$err]  ."!</p>" ;
+                        }
+                        if (isset($_GET[$succ])) {
+                            echo "<p class='msg'>Success: " . $_GET[$succ]  ."!</p>" ;
+                        }
+                        // $msg = "";
 
 
-                    ?>
+                        ?>
                     <h1>Contribution page</h1>
                     <?php 
                       $db = new Database();

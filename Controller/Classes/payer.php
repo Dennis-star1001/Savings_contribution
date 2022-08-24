@@ -21,9 +21,9 @@ class Payer extends Database
         return $this->lookUp($this->table, $field, $condition, $column);
     }
 
-    public function getInfoByGender($gender)
+    public function getInfoByGender($label,$value)
     {
-        return $this->payerInfo("gender = '$gender'");
+        return $this->payerInfo("$label = '$value'");
     }
  
 
@@ -85,10 +85,7 @@ class Payer extends Database
         $this->savePayerInfo();
     }
 
-    public function processGenderInfo($gender)
-    {
-        $this->getInfoByGender($gender);
-    }
+   
 
     public function savePayerInfo()
     {
